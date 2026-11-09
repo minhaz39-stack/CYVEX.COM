@@ -1,0 +1,295 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: var(--font-oxanium), 'Segoe UI', sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-oxanium), 'Segoe UI', sans-serif;
+  }
+
+  body {
+    background: #07110f;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .panel {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    background: #0b1714;
+  }
+
+  .panel-heading {
+    display: flex;
+    min-height: 72px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 1rem 1.25rem;
+  }
+
+  .panel-title {
+    margin-top: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .eyebrow {
+    color: #668079;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .badge-pass {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(120, 245, 189, 0.15);
+    border-radius: 0.375rem;
+    background: rgba(120, 245, 189, 0.06);
+    padding: 0.3rem 0.55rem;
+    color: #78f5bd;
+    font-size: 0.625rem;
+    font-weight: 600;
+  }
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(94, 129, 115, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 129, 115, 0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+}
+
+.hero-orb {
+  background: radial-gradient(
+    circle,
+    rgba(77, 236, 164, 0.1) 0%,
+    rgba(16, 115, 77, 0.04) 40%,
+    transparent 70%
+  );
+  filter: blur(4px);
+}
+
+.cyvex-circuit-grid {
+  background-image:
+    linear-gradient(rgba(62, 255, 159, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(62, 255, 159, 0.045) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(circle at center, black, transparent 76%);
+}
+
+.tech-ring {
+  border: 1px solid rgba(84, 255, 174, 0.2);
+  background:
+    radial-gradient(circle, transparent 66%, rgba(80, 255, 169, 0.045) 67%, transparent 70%),
+    conic-gradient(
+      from 10deg,
+      transparent 0 8%,
+      rgba(84, 255, 174, 0.95) 8% 11%,
+      transparent 11% 30%,
+      rgba(84, 255, 174, 0.3) 30% 31%,
+      transparent 31% 58%,
+      rgba(0, 229, 255, 0.7) 58% 62%,
+      transparent 62% 88%,
+      rgba(84, 255, 174, 0.75) 88% 91%,
+      transparent 91%
+    );
+  mask: radial-gradient(circle, transparent 61%, black 62% 69%, transparent 70%);
+  animation: tech-orbit 18s linear infinite;
+}
+
+.tech-ring--reverse {
+  animation-direction: reverse;
+  animation-duration: 12s;
+  opacity: 0.7;
+}
+
+.tech-ring--intro {
+  animation-duration: 9s;
+  opacity: 0.65;
+}
+
+.cyvex-orbit-dots {
+  border: 1px dashed rgba(120, 245, 189, 0.2);
+  animation: tech-orbit 28s linear infinite reverse;
+}
+
+.header-tech-ring {
+  border: 1px dashed rgba(120, 245, 189, 0.55);
+  box-shadow: 0 0 18px rgba(89, 255, 178, 0.12);
+  animation: tech-orbit 8s linear infinite;
+}
+
+.cyvex-breathe {
+  animation: cyvex-breathe 3.6s ease-in-out infinite;
+}
+
+.cyvex-intro-progress {
+  transform-origin: left;
+  animation: cyvex-intro-progress 3s linear forwards;
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, #f0fff7 5%, #78f5bd 55%, #62d4b4 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.scan-glow {
+  box-shadow:
+    0 0 0 1px rgba(120, 245, 189, 0.025),
+    0 18px 80px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(77, 236, 164, 0.045);
+}
+
+.capability-card::before {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0 0, rgba(120, 245, 189, 0.06), transparent 38%);
+  content: '';
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.capability-card:hover::before {
+  opacity: 1;
+}
+
+.radar-ring {
+  animation: radar-pulse 1.5s ease-out infinite;
+}
+
+.threat-matrix-grid {
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.035) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.threat-node-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: threat-node-pulse 1.8s ease-out infinite;
+}
+
+.matrix-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 0,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+.matrix-vignette {
+  background: radial-gradient(circle at center, transparent 20%, rgba(10, 14, 23, 0.92) 100%);
+}
+
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.55);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes threat-node-pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+@keyframes tech-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cyvex-breathe {
+  0%,
+  100% {
+    transform: scale(0.98);
+    filter: brightness(0.9);
+  }
+  50% {
+    transform: scale(1.02);
+    filter: brightness(1.08);
+  }
+}
+
+@keyframes cyvex-intro-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radar-ring,
+  .threat-node-pulse,
+  .tech-ring,
+  .cyvex-orbit-dots,
+  .header-tech-ring,
+  .cyvex-breathe,
+  .cyvex-intro-progress {
+    animation: none;
+  }
+}
+
+.figma-custom-code-fragment {
+  display: contents;
+}
+
+.figma-bypass-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 2147483647;
+  transform: translateY(-150%);
+  border-radius: 6px;
+  background: #111827;
+  color: #fff;
+  padding: 8px 12px;
+  font:
+    600 14px/1.2 system-ui,
+    sans-serif;
+  text-decoration: none;
+}
+
+.figma-bypass-link:focus {
+  transform: translateY(0);
+}
